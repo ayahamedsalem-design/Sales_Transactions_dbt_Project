@@ -1,0 +1,12 @@
+{{ config(materialized='table') }}
+
+with staging as (
+    select * from {{ ref('stg_Sales_Transactions') }}
+)
+
+select
+  TransactionID,
+  CustomerID,
+  OrderID
+from staging
+  
