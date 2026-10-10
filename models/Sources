@@ -1,0 +1,8 @@
+yaml
+version: 2
+sources:
+  - name: Sales_Raw
+  database: SALES_TRANSACTIONS
+  schema: PUBLIC
+  tabels:
+    - name: RAW_SALES_TRANSACTIONS
