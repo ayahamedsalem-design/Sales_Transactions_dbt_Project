@@ -1,0 +1,31 @@
+{{ config(materialized='table') }}
+
+with staging as (
+    select * from {{ ref('stg_Sales_Transactions') }}
+)
+
+select
+  OrderID,
+  StoreID,
+  OrderDate,
+  OrderTime,
+  OrderYear,
+  SalesChannel,
+  Quantity,
+  UnitPrice,
+  Delivery_Days
+  DiscountPercentage,
+  PaymentMethod,
+  SalesRepresentative,
+  PormotionCode,
+  ShippingMethod,
+  DeliveryDays,
+  ReturnFlage,
+  ReturnReason,
+  OrderStatus,
+  CustomerRating
+from staging
+group by
+  OrderID,
+  OrderDate,
+  OrderStatus

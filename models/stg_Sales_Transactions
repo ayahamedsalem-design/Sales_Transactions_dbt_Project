@@ -1,0 +1,61 @@
+with sources as (
+    select * from {{ sources ('Sales_Raw', 'RAW_SALES_TRANSACTIONS') }}
+)
+
+select
+  Customer_ID as CustomerID,
+  Customer_Name as CustomerName,
+  Customer_Age as CustomerAge,
+  Customer_Gender as CustomerGender,
+  Customer_Segment as CustomerSegment
+from sources
+
+
+select
+  Product_ID as ProductID,
+  Product_Name as ProductName,
+  Product_Category as ProductCategory,
+  Product_Subcategory as ProductSubcategory,
+  Inventory_Level as InventoryLevel,
+  Sales_Amount as SalesAmount,
+  Cost_Amount as CostAmount,
+  Profit as Profit
+from sources
+
+
+select
+  Order_ID as OrderID,
+  Store_ID as StoreID,
+  Order_Date as OrderDate,
+  Order_Time as OrderTime,
+  Order_Year as OrderYear,
+  Sales_Channel as SalesChannel,
+  Quantity as Quantity,
+  Unit_Price as UnitPrice,
+  Discount_Percentage as DiscountPercentage,
+  Payment_Method as PaymentMethod,
+  Sales_Representative as SalesRepresentative,
+  Pormotion_Code as PormotionCode,
+  Shipping_Method as ShippingMethod,
+  Delivery_Days as DeliveryDays,
+  Return_Flage as ReturnFlage,
+  Return_Reason as ReturnReason,
+  Order_Status as OrderStatus,
+  Customer_Rating as CustomerRating
+from sources
+
+
+select
+  Store_ID as StoreID
+  Store_Name as StoreName
+  Country as Country
+  City as City
+  Region as Region
+from sources
+
+
+select
+  Transaction_ID as TransactionID
+  Customer_ID as CustomerID
+  Order_ID as OrderID
+from sources  

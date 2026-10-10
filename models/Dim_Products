@@ -1,0 +1,21 @@
+{{ config(materialized='table') }}
+
+with staging as (
+    select * from {{ ref('stg_Sales_Transactions') }}
+)
+
+select
+  ProductID,
+  ProductName,
+  ProductCategory,
+  ProductSubcategory,
+  InventoryLevel,
+  SalesAmount,
+  CostAmount,
+  Profit
+from staging
+group by
+  ProductID,
+  ProductName,
+  ProductCategory,
+  ProductSubcategory

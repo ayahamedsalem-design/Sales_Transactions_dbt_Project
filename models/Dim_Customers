@@ -1,0 +1,17 @@
+{{ config(materialized='table') }}
+
+with staging as (
+    select * from {{ ref('stg_Sales_Transactions') }}
+)
+
+select
+    CustomerID,
+    CustomerName,
+    CustomerAge,
+    CustomerGender,
+    CustomerSegment
+from staging
+group by
+    CustomerID,
+    CustomerName,
+    CustomerGender
